@@ -141,10 +141,14 @@ keybinds clear-defaults=true {
         }
     }
     shared_among "normal" "locked" {
-        bind "Alt left" { MoveFocusOrTab "left"; }
-        bind "Alt down" { MoveFocus "down"; }
-        bind "Alt up" { MoveFocus "up"; }
-        bind "Alt right" { MoveFocusOrTab "right"; }
+        bind "Alt left" { GoToPreviousTab; }
+        bind "Alt down" { GoToNextTab; }
+        bind "Alt up" { GoToPreviousTab; }
+        bind "Alt right" { GoToNextTab; }
+        // bind "Alt left" { MoveFocusOrTab "left"; }
+        // bind "Alt down" { MoveFocus "down"; }
+        // bind "Alt up" { MoveFocus "up"; }
+        // bind "Alt right" { MoveFocusOrTab "right"; }
         bind "Alt +" { Resize "Increase"; }
         bind "Alt -" { Resize "Decrease"; }
         bind "Alt =" { Resize "Increase"; }
@@ -160,6 +164,27 @@ keybinds clear-defaults=true {
         // bind "Alt h" { FocusPreviousPane; }
         bind "Alt n" { NewPane; }
         bind "Alt o" { MoveTab "right"; }
+        bind "Alt 1" {
+          NewTab {
+              layout "default"
+          }
+        }
+        bind "Alt 2" {
+          NewTab {
+              layout "dev"
+          }
+        }
+        // rename tab to directory name
+        bind "Alt r" {
+            // rename with fish
+            Run "fish" "-c" "zellij action rename-tab (basename $PWD)" {
+                close_on_exit true
+            }
+            // rename with bash
+            // Run "bash" "-lc" "zellij action rename-tab ${PWD##*/}" {
+            //     close_on_exit true
+            // }
+        }
     }
     shared_except "locked" "renametab" "renamepane" {
         bind "Ctrl g" { SwitchToMode "locked"; }
