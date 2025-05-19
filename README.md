@@ -1,4 +1,8 @@
 #Zellij config
+## Requirements
+- zellij
+- fish
+
 ## Install Zellij
 **Fedora**
 ```bash
