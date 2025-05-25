@@ -1,36 +1,14 @@
 layout {
-    pane size=1 split_direction="vertical" {
-        pane size="70%" borderless=true {
-            plugin location="tab-bar"
-        }
-        pane size="30%" borderless=true {
-            plugin location="file:~/.config/zellij/plugins/zellij-datetime.wasm" {
-              timezone1 "CET/+1"
-              timezone2 "CEST/+2"
-              default_timezone "CEST"
-              date_format "%Y/%m/%d %A"
-              time_format "%I:%M %p"
-              background_color "#0080a0"
-              foreground_color "#ffffff"
-              pane_color "#000000"
-              enable_right_click false
-              arrow_separator1 ""
-              arrow_separator2 ""
-              arrow_separator3 ""
-              padding_adjust 0
-              text_align "right"
-            }
-        }
-    }
-    pane
-    // pane split_direction="vertical" {
-    //     pane size="65%"
-    //     pane split_direction="horizontal" {
-    //       pane
-    //       pane
-    //     }
-    // }
+  default_tab_template {
     pane size=1 borderless=true {
-        plugin location="status-bar"
+      plugin location="zjstatus"
     }
+    children
+    pane size=1 borderless=true {
+      plugin location="status-bar"
+    }
+  }
+  tab {
+    pane
+  }
 }
